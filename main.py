@@ -1,11 +1,10 @@
-import os
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 from bs4 import BeautifulSoup
 import requests
 import downloadMP3
 from downloadMP3 import downloadMP3
-import shutil
+import pandas as pd
 
 cid = '0cad5195dfd04884b84ba221fe400bff'
 secret = '212724fad9f6414fb40a0d2caf57f4ee'
@@ -78,8 +77,14 @@ sp.playlist_replace_items(playlist_id= playlistID, items= [firstSong, secondSong
 
 downloadMP3(playlistID)
 
-response = input("FINISH SCRIPT?: \n")
-while (response != "Y"):
-    response = input("FINISH SCRIPT?: \n")
-if response == "Y":
-    shutil.rmtree("CPEG657 Project")
+featuresFirstSong = sp.audio_features(firstSong)
+featuresSecondSong = sp.audio_features(secondSong)
+
+print("\n\n")
+print(f"Features for {firstSongTitle} by {firstSongArtist}:\n")
+data = pd.DataFrame(featuresFirstSong)
+print(data.T)
+
+print(f"Features for {secondSongTitle} by {secondSongArtist}:\n")
+data = pd.DataFrame(featuresSecondSong)
+print(data.T)
