@@ -15,3 +15,4 @@ You may need to run the following pip installs to ensure this works:
 * bs4, Beautiful Soup
 * request
 
+The output of the code will be two strings containing the lyrics for each song and a folder containing the MP3 files for each song
