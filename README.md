@@ -12,5 +12,6 @@ You may need to run the following pip installs to ensure this works:
 * yotube_search
 * urllib.request
 * mutagen
-* 
+* bs4, Beautiful Soup
+* request
 
